@@ -15,16 +15,46 @@ export default function Home() {
 
       <section>
         <h2>📝エンジニアのブログ</h2>
-        <div>
+        <div className={styles.grid}>
           <article>
             <Link href="/">
-              <img src="/images/thumbnail01.jpg" alt="" />
+              <img src="/images/thumbnail01.jpg" alt="" className={styles.thumbnailImage} />
             </Link>
             <Link href="/">
               SSGとSSRの使い分けの部分はいつなのか？
             </Link>
             <br />
-            <small>September, 27, 2025</small>
+            <small className={utilStyle.lightText}>September, 27, 2025</small>
+          </article>
+          <article>
+            <Link href="/">
+              <img src="/images/thumbnail01.jpg" alt="" className={styles.thumbnailImage} />
+            </Link>
+            <Link href="/">
+              SSGとSSRの使い分けの部分はいつなのか？
+            </Link>
+            <br />
+            <small className={utilStyle.lightText}>September, 27, 2025</small>
+          </article>
+          <article>
+            <Link href="/">
+              <img src="/images/thumbnail01.jpg" alt="" className={styles.thumbnailImage} />
+            </Link>
+            <Link href="/">
+              SSGとSSRの使い分けの部分はいつなのか？
+            </Link>
+            <br />
+            <small className={utilStyle.lightText}>September, 27, 2025</small>
+          </article>
+          <article>
+            <Link href="/">
+              <img src="/images/thumbnail01.jpg" alt="" className={styles.thumbnailImage} />
+            </Link>
+            <Link href="/">
+              SSGとSSRの使い分けの部分はいつなのか？
+            </Link>
+            <br />
+            <small className={utilStyle.lightText}>September, 27, 2025</small>
           </article>
         </div>
       </section>
