@@ -19,7 +19,7 @@ export async function getStaticProps() {
   };
 }
 
-export default function Home( { allPostsData } ) {
+export default function Home({ allPostsData }) {
   return (
     <Layout>
       <section className={utilStyle.headingMd}>
@@ -29,16 +29,19 @@ export default function Home( { allPostsData } ) {
       <section>
         <h2>📝エンジニアのブログ</h2>
         <div className={styles.grid}>
-          <article>
-            <Link href="/">
-              <img src="/images/thumbnail01.jpg" alt="" className={styles.thumbnailImage} />
-            </Link>
-            <Link href="/">
-              <p>SSGとSSRの使い分けの部分はいつなのか？</p>
-            </Link>
-            <br />
-            <small className={utilStyle.lightText}>September, 27, 2025</small>
-          </article>
+          {/* // note: map関数で展開するから繰り返し処理が楽 */}
+          {allPostsData.map(({ id, title, date, thumbnail }) => (
+            <article key={id}>
+              <Link href={`/posts/${id}`}>
+                <img src={`${thumbnail}`} alt="" className={styles.thumbnailImage} />
+              </Link>
+              <Link href={`/posts/${id}`}>
+                <p>{title}</p>
+              </Link>
+              <br />
+              <small className={utilStyle.lightText}>{date}</small>
+            </article>
+          ))}
         </div>
       </section>
     </Layout>
