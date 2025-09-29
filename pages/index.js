@@ -5,8 +5,21 @@ import Link from "next/link";
 import Layout from "@/components/Layout";
 
 import utilStyle from "../styles/utils.module.css";
+import { getPostsData } from "@/lib/post";
 
-export default function Home() {
+// SSGの場合
+export async function getStaticProps() {
+  const allPostsData = getPostsData(); // note: id, title, date, thumbnail
+  console.log(allPostsData);
+
+  return {
+    props: {
+      allPostsData,
+    },
+  };
+}
+
+export default function Home( { allPostsData } ) {
   return (
     <Layout>
       <section className={utilStyle.headingMd}>
@@ -21,37 +34,7 @@ export default function Home() {
               <img src="/images/thumbnail01.jpg" alt="" className={styles.thumbnailImage} />
             </Link>
             <Link href="/">
-              SSGとSSRの使い分けの部分はいつなのか？
-            </Link>
-            <br />
-            <small className={utilStyle.lightText}>September, 27, 2025</small>
-          </article>
-          <article>
-            <Link href="/">
-              <img src="/images/thumbnail01.jpg" alt="" className={styles.thumbnailImage} />
-            </Link>
-            <Link href="/">
-              SSGとSSRの使い分けの部分はいつなのか？
-            </Link>
-            <br />
-            <small className={utilStyle.lightText}>September, 27, 2025</small>
-          </article>
-          <article>
-            <Link href="/">
-              <img src="/images/thumbnail01.jpg" alt="" className={styles.thumbnailImage} />
-            </Link>
-            <Link href="/">
-              SSGとSSRの使い分けの部分はいつなのか？
-            </Link>
-            <br />
-            <small className={utilStyle.lightText}>September, 27, 2025</small>
-          </article>
-          <article>
-            <Link href="/">
-              <img src="/images/thumbnail01.jpg" alt="" className={styles.thumbnailImage} />
-            </Link>
-            <Link href="/">
-              SSGとSSRの使い分けの部分はいつなのか？
+              <p>SSGとSSRの使い分けの部分はいつなのか？</p>
             </Link>
             <br />
             <small className={utilStyle.lightText}>September, 27, 2025</small>
