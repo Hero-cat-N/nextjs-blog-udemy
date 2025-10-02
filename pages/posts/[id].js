@@ -10,6 +10,10 @@ export async function getStaticPaths() {
   }
 }
 
+export function getStaticProps({ params }) {
+  params.id
+}
+
 // note: [id].jsとして任意のURLをつけることができる
 
 export default function Post() {
