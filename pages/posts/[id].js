@@ -1,5 +1,5 @@
 import Layout from "@/components/Layout";
-import { getAllPostIds } from "@/lib/post";
+import { getAllPostIds, getPostsData } from "@/lib/post";
 
 export async function getStaticPaths() {
   const paths = getAllPostIds();
@@ -11,7 +11,13 @@ export async function getStaticPaths() {
 }
 
 export function getStaticProps({ params }) {
-  params.id
+  const posts = getPostsData(params.getAllPostIds);
+  console.log(posts);
+  return {
+    props: {
+      posts, // ← コンポーネントに渡される
+    },
+  };
 }
 
 // note: [id].jsとして任意のURLをつけることができる
