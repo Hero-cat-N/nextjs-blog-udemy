@@ -1,5 +1,5 @@
 import Layout from "@/components/Layout";
-import { getAllPostIds, getPostsData } from "@/lib/post";
+import { getAllPostIds, getPostData } from "@/lib/post";
 
 export async function getStaticPaths() {
   const paths = getAllPostIds();
@@ -10,22 +10,27 @@ export async function getStaticPaths() {
   }
 }
 
-export function getStaticProps({ params }) {
-  const posts = getPostsData(params.getAllPostIds);
-  console.log(posts);
+// note: getPostData を async にしてるのに await をつけ忘れてる
+
+export async function getStaticProps({ params }) {
+  const postData = await getPostData(params.id);
   return {
     props: {
-      posts, // ← コンポーネントに渡される
+      postData, // ← コンポーネントに渡される
     },
   };
 }
 
 // note: [id].jsとして任意のURLをつけることができる
 
-export default function Post() {
+export default function Post( {postData} ) {
   return (
     <Layout>
-      動的ルーティング設定
+      {postData.title}
+      <br />
+      {postData.date}
+      <br />
+      {postData.blogContentHTML}
     </Layout>
   );
 }
