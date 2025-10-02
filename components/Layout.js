@@ -8,8 +8,7 @@ const name = "Hero-cat's Code";
 export const siteTitle = "Next.js blog";
 
 // propsとしてchldrenが渡って来る
-function Layout( {children} ) {
-
+function Layout( {children, home} ) {
 
   return (
     <div className={styles.container}>
@@ -17,8 +16,17 @@ function Layout( {children} ) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <header className={styles.header}>
-        <img src="/images/profile.png" width={160} className={utilStyles.borderCircle} />
+        { home ? (
+          <>
+          <img src="/images/profile.png" className={`${utilStyles.borderCircle} ${styles.headerHomeImage}`} />
           <h1 className={utilStyles.heading2Xl}>{name}</h1>
+          </>
+        ) : (
+          <>
+          <img src="/images/profile.png" width={100} className={`${utilStyles.borderCircle}`} />
+          <h1 className={utilStyles.heading2Xl}>{name}</h1>
+          </>
+        ) }
       </header>
       <main>
         {children}
