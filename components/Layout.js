@@ -3,6 +3,7 @@ import styles from "./layout.module.css"
 // note: style.containerとする場合はcssはhogehoge.module.cssとする必要がある
 
 import utilStyles from "../styles/utils.module.css"
+import Link from "next/link";
 
 const name = "Hero-cat's Code";
 export const siteTitle = "Next.js blog";
@@ -30,6 +31,12 @@ function Layout( {children, home} ) {
       </header>
       <main>
         {children}
+        {/* もしホームのページ以外なら */}
+        {!home && (
+          <div>
+            <Link href="/">←ホームに戻る</Link>
+          </div>
+        )}
       </main>
     </div>
   );
