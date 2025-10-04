@@ -35,7 +35,7 @@ export default function Home({ allPostsData }) {
       </Head>
 
       <section className={utilStyle.headingMd}>
-        <p>私はフロントエンドエンジニアを目指しています</p>
+        <p>私はNextjsエンジニアを目指しています</p>
       </section>
 
       <section>
